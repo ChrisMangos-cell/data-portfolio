@@ -1,0 +1,14 @@
+# Data files (Do not push large datasets to GitHub)
+*.csv
+*.db
+ecommerce_analytics.db
+sales_customer_analytics/data/raw/
+
+# Cloudflare binary and logs
+cloudflared-linux-amd64
+streamlit.log
+
+# Python cache & Colab files
+__pycache__/
+.ipynb_checkpoints/
+*.pyc
