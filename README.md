@@ -20,8 +20,25 @@ Personal portfolio showcasing end-to-end data analytics, engineering, and predic
 
 ---
 
+## 🌦️ Project 2: Weather Data Ingestion & Analytics Pipeline
+📁 **Repository Directory:** [`weather_data_pipeline/`](./weather_data_pipeline)  
+🛠️ **Tech Stack:** Python (Requests, urllib3 Retry Adapters), DuckDB SQL, Pytest, REST APIs  
+📈 **Data Scope:** 1,800 Hourly Observations Across 5 Global Metros (Open-Meteo API)
+
+### Executive Engineering Summary
+
+| Engineering Layer | Implementation / Metric | Core Technical Outcome |
+| :--- | :--- | :--- |
+| **Resilient API Extraction** | **urllib3 Retry + Exponential Backoff** | Configured a fault-tolerant REST client handling rate limits (`429`) and gateway timeouts (`5xx`), extracting 15-day continuous hourly payloads across Melbourne, Sydney, London, New York, and Tokyo. |
+| **Idempotent Staging Layer** | **DuckDB Composite Key Upserts** | Built relational schema enforced by composite primary keys `(location_id, observation_timestamp)`, preventing duplicate records during pipeline re-runs via atomic `INSERT OR REPLACE`. |
+| **Analytical Window Views** | **Daily Rollups & Moving Averages** | Engineered SQL analytical views computing diurnal temperature swings, cumulative precipitation, and 3-day / 7-day rolling moving averages to smooth short-term variance. |
+| **Automated Data Quality** | **Pytest Assertion Suite** | Implemented assertions validating primary key uniqueness, zero critical nulls, physical boundary conditions (-60°C to 60°C, 0–100% humidity), and hourly temporal continuity. |
+
+---
+
 ## 🗺️ Upcoming Portfolio Roadmap
 
-* **Project 2 (Month 2): Weather Data Pipeline & Ingestion Engine** — Resilient REST API client, relational staging, and automated ETL pipelines. *(In Progress)*
-* **Project 3 (Month 3): Spotify Music Clustering** — Unsupervised audio feature clustering with Scikit-Learn and SQL.
-* **Project 4 (Month 3): Healthcare Risk Prediction & API** — Classification model deployed via FastAPI.
+* **Project 1 (Month 1): E-Commerce Revenue & Retention Engine** — DuckDB SQL, RFM, Cohort Retention, Streamlit Dashboard. ✅ *(Completed)*
+* **Project 2 (Month 2): Weather Data Pipeline & Ingestion Engine** — Core ETL, staging schema, and automated tests complete. 🟡 *(Weeks 7–8 Automation & Anomaly Detection In Progress)*
+* **Project 3 (Month 3): Spotify Music Clustering** — Unsupervised audio feature clustering with Scikit-Learn and SQL. ⚪ *(Planned)*
+* **Project 4 (Month 3): Healthcare Risk Prediction & API** — Classification model deployed via FastAPI. ⚪ *(Planned)*
