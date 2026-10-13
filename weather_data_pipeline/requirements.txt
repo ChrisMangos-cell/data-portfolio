@@ -1,0 +1,5 @@
+﻿requests>=2.31.0
+duckdb>=0.10.0
+pytest>=8.0.0
+matplotlib>=3.8.0
+prefect>=2.16.0

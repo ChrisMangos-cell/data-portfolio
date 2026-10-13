@@ -1,4 +1,4 @@
-name: Daily Weather Pipeline Refresh
+﻿name: Daily Weather Pipeline Refresh
 
 on:
   schedule:
@@ -24,9 +24,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          if [ -f weather_data_pipeline/requirements.txt ]; then
-            pip install -r weather_data_pipeline/requirements.txt
-          fi
+          pip install -r weather_data_pipeline/requirements.txt
 
       - name: Run weather pipeline
         run: |
@@ -34,7 +32,7 @@ jobs:
 
       - name: Run pytest assertions
         run: |
-          pytest weather_data_pipeline/tests/
+          python -m pytest weather_data_pipeline/tests/
 
       - name: Commit and push changes
         run: |
