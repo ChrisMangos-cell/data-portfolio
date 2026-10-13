@@ -58,9 +58,9 @@ The engine computes pairwise Cosine Similarity across the standardized 9-dimensi
 python scripts/recommend.py
 ---
 
-### Step 5: Update Root `README.md`
+### Step 6: Write the Root Portfolio Documentation
 
-Copy and paste this block, then press **Enter**:
+Run this block to update `README.md` at the project root:
 
 ```powershell
 Set-Content -Path "README.md" -Encoding UTF8 -Value @'
