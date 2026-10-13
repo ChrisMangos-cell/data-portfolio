@@ -20,7 +20,7 @@ Personal portfolio showcasing end-to-end data analytics, engineering pipelines, 
 
 ---
 
-### 🌦️ Project 2: Weather Data Ingestion & Analytics Pipeline
+## 🌦️ Project 2: Weather Data Ingestion & Analytics Pipeline
 📁 **Repository Directory:** [`weather_data_pipeline/`](./weather_data_pipeline)  
 🛠️ **Tech Stack:** Python (Requests, Prefect, Pytest), DuckDB SQL, GitHub Actions, Matplotlib  
 📈 **Data Scope:** 1,800+ Hourly Observations Across 5 Global Metros (Open-Meteo API)
@@ -34,8 +34,9 @@ Personal portfolio showcasing end-to-end data analytics, engineering pipelines, 
 | **Idempotent Staging Layer** | **DuckDB Composite Key Upserts** | Enforced composite primary keys `(location_id, observation_timestamp)` to guarantee idempotent loads via atomic `INSERT OR REPLACE`. |
 | **Workflow Orchestration** | **Prefect Flow DAG** | Managed state transitions and task retries across extraction, validation, and analytics DAG tasks in under 3 seconds per run. |
 | **Automated CI/CD Cron** | **GitHub Actions Cloud Workflow** | Scheduled daily refresh jobs (06:00 UTC) executing headless incremental ingestion, view refreshes, and test guardrails. |
-**Statistical Anomaly Engine** | **Windowed Z-Scores (`|Z|` ≥ 2.5)** | Flagged 44 severe meteorological anomalies across 1,800 observations, including a +3.40σ Sydney heatwave (32.8°C), New York rain squalls (5.4 mm/hr), and London gale gusts (25.2 km/h). |
+| **Statistical Anomaly Engine** | **Windowed Z-Scores (\|Z\| ≥ 2.5)** | Flagged 44 severe meteorological anomalies across 1,800 observations, including a +3.40σ Sydney heatwave (32.8°C), New York rain squalls (5.4 mm/hr), and London gale gusts (25.2 km/h). |
 | **Automated Data Quality** | **Pytest Assertion Suite** | Enforced CI quality gates checking primary key uniqueness, zero critical nulls, physical domain bounds (-60°C to 60°C), and hourly continuity. |
+
 ---
 
 ## 🎧 Project 3: Spotify Music Clustering & Recommendation Engine
