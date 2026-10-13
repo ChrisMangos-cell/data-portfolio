@@ -1,0 +1,32 @@
+name: Daily Weather Pipeline Refresh
+
+on:
+  schedule:
+    # Runs at 06:00 UTC every day
+    - cron: '0 6 * * *'
+  workflow_dispatch: # Allows manual trigger from GitHub UI
+
+jobs:
+  run-pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Dependencies
+        run: |
+          pip install duckdb requests pandas pyarrow pytest prefect
+
+      - name: Execute Orchestration Flow
+        run: |
+          python weather_data_pipeline/orchestrator/weather_flow.py
+
+      - name: Run Quality Assertions
+        run: |
+          pytest weather_data_pipeline/tests/test_pipeline.py
