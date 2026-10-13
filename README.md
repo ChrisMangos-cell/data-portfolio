@@ -30,7 +30,7 @@ Personal portfolio showcasing end-to-end data analytics, engineering pipelines, 
 | Engineering Layer | Implementation / Metric | Core Outcome & Analytical Finding |
 | :--- | :--- | :--- |
 | **Resilient API Extraction** | **urllib3 Retry + Backoff** | Handled rate limits (`429`) and gateway timeouts (`5xx`) across continuous hourly payloads for Melbourne, Sydney, London, New York, and Tokyo. |
-| **Stateful Watermarking** | **Incremental Timestamp Delta** | Automated boundary queries via `MAX(observation_timestamp)` in DuckDB, reducing redundant API egress and compute overhead. |
+| **Stateful Watermarking** | **Incremental Timestamp Delta** | Automated boundary queries via `MAX(observation_timestamp)` in DuckDB, reducing redundant API degress and compute overhead. |
 | **Idempotent Staging Layer** | **DuckDB Composite Key Upserts** | Enforced composite primary keys `(location_id, observation_timestamp)` to guarantee idempotent loads via atomic `INSERT OR REPLACE`. |
 | **Workflow Orchestration** | **Prefect Flow DAG** | Managed state transitions and task retries across extraction, validation, and analytics DAG tasks in under 3 seconds per run. |
 | **Automated CI/CD Cron** | **GitHub Actions Cloud Workflow** | Scheduled daily refresh jobs (06:00 UTC) executing headless incremental ingestion, view refreshes, and test guardrails. |
