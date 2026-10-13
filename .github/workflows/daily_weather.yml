@@ -26,6 +26,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r weather_data_pipeline/requirements.txt
 
+      - name: Ensure data directory exists
+        run: |
+          mkdir -p weather_data_pipeline/data
+
       - name: Run weather pipeline
         run: |
           python weather_data_pipeline/scripts/run_pipeline.py
