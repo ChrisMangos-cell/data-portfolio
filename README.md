@@ -1,6 +1,6 @@
-# 🚀 Data Analytics Portfolio
+﻿# 🚀 Data Analytics & Engineering Portfolio
 
-Personal portfolio showcasing end-to-end data analytics, engineering, and predictive modeling projects.
+Personal portfolio showcasing end-to-end data analytics, engineering pipelines, and predictive modeling systems.
 
 ---
 
@@ -13,32 +13,35 @@ Personal portfolio showcasing end-to-end data analytics, engineering, and predic
 
 | Analysis Area | Metric / Threshold | Core Commercial Finding |
 | :--- | :--- | :--- |
-| **Cohort Retention** | **< 0.7% Month 1 Decay** | Repeat purchase rates dropped below 0.7% across all 18 monthly acquisition cohorts, proving the platform functions as a one-time transaction engine rather than a habitual repeat marketplace. |
+| **Cohort Retention** | **< 0.7% Month 1 Decay** | Repeat purchase rates dropped below 0.7% across all 18 monthly acquisition cohorts, proving the platform functions as an acquisition-dependent transaction engine rather than a habitual repeat marketplace. |
 | **RFM Segmentation** | **~R$ 4.4M GMV Concentration** | The *Dormant Big Spenders* and *At-Risk High-Value* segments accounted for ~R$ 4.4M in revenue despite having less than half the volume of general buyers, highlighting the primary audience for automated win-back marketing. |
 | **Pareto Distribution** | **Top 23% Categories = 80% GMV** | 80% of marketplace gross value is concentrated in only 23% of product categories (led by Health & Beauty, Watches, and Bed/Bath), exposing heavy supplier-side vulnerability. |
-| **Interactive BI App** | **Multi-Tab Dashboard** | Built a Streamlit analytics dashboard backed by pre-aggregated Parquet data and DuckDB for fast query execution and KPI filtering. |
+| **Interactive BI App** | **Multi-Tab Dashboard** | Built a Streamlit analytics dashboard backed by pre-aggregated Parquet data and DuckDB for sub-second KPI filtering. |
 
 ---
 
 ## 🌦️ Project 2: Weather Data Ingestion & Analytics Pipeline
 📁 **Repository Directory:** [`weather_data_pipeline/`](./weather_data_pipeline)  
-🛠️ **Tech Stack:** Python (Requests, urllib3 Retry Adapters), DuckDB SQL, Pytest, REST APIs  
-📈 **Data Scope:** 1,800 Hourly Observations Across 5 Global Metros (Open-Meteo API)
+🛠️ **Tech Stack:** Python (Requests, Prefect, Pytest), DuckDB SQL, GitHub Actions, Matplotlib  
+📈 **Data Scope:** 1,800+ Hourly Observations Across 5 Global Metros (Open-Meteo API)
 
-### Executive Engineering Summary
+### Executive Results & Engineering Summary
 
-| Engineering Layer | Implementation / Metric | Core Technical Outcome |
+| Engineering Layer | Implementation / Metric | Core Outcome & Analytical Finding |
 | :--- | :--- | :--- |
-| **Resilient API Extraction** | **urllib3 Retry + Exponential Backoff** | Configured a fault-tolerant REST client handling rate limits (`429`) and gateway timeouts (`5xx`), extracting 15-day continuous hourly payloads across Melbourne, Sydney, London, New York, and Tokyo. |
-| **Idempotent Staging Layer** | **DuckDB Composite Key Upserts** | Built relational schema enforced by composite primary keys `(location_id, observation_timestamp)`, preventing duplicate records during pipeline re-runs via atomic `INSERT OR REPLACE`. |
-| **Analytical Window Views** | **Daily Rollups & Moving Averages** | Engineered SQL analytical views computing diurnal temperature swings, cumulative precipitation, and 3-day / 7-day rolling moving averages to smooth short-term variance. |
-| **Automated Data Quality** | **Pytest Assertion Suite** | Implemented assertions validating primary key uniqueness, zero critical nulls, physical boundary conditions (-60°C to 60°C, 0–100% humidity), and hourly temporal continuity. |
+| **Resilient API Extraction** | **urllib3 Retry + Exponential Backoff** | Handled rate limits (`429`) and gateway timeouts (`5xx`) across continuous hourly payloads for Melbourne, Sydney, London, New York, and Tokyo. |
+| **Stateful Watermarking** | **Incremental Timestamp Delta** | Automated boundary queries via `MAX(observation_timestamp)` in DuckDB, reducing redundant API egress and compute costs by querying only newly elapsed intervals. |
+| **Idempotent Staging Layer** | **DuckDB Composite Key Upserts** | Enforced composite primary keys `(location_id, observation_timestamp)` to guarantee idempotent loads via atomic `INSERT OR REPLACE`. |
+| **Workflow Orchestration** | **Prefect Flow DAG** | Managed state transitions and task retries across extraction, validation, and analytics DAG tasks in under 3 seconds per run. |
+| **Automated CI/CD Cron** | **GitHub Actions Cloud Workflow** | Scheduled daily refresh jobs (06:00 UTC) executing headless incremental ingestion, view refreshes, and test guardrails. |
+| **Statistical Anomaly Engine** | **Windowed Z-Scores (|Z| >= 2.5)** | Flagged 44 severe meteorological anomalies across 1,800 observations, including a +3.40σ Sydney heatwave (32.8°C), New York frontal rain squalls (5.4 mm/hr), and London gale gusts (25.2 km/h). |
+| **Automated Data Quality** | **Pytest Assertion Suite** | Enforced CI quality gates checking primary key uniqueness, zero critical nulls, physical domain bounds (-60°C to 60°C), and hourly continuity. |
 
 ---
 
-## 🗺️ Upcoming Portfolio Roadmap
+## 🗺️ Portfolio Roadmap
 
 * **Project 1 (Month 1): E-Commerce Revenue & Retention Engine** — DuckDB SQL, RFM, Cohort Retention, Streamlit Dashboard. ✅ *(Completed)*
-* **Project 2 (Month 2): Weather Data Pipeline & Ingestion Engine** — Core ETL, staging schema, and automated tests complete. 🟡 *(Weeks 7–8 Automation & Anomaly Detection In Progress)*
+* **Project 2 (Month 2): Weather Data Pipeline & Ingestion Engine** — End-to-end API ETL, DuckDB staging, Prefect orchestration, CI/CD automation, and statistical anomaly detection. ✅ *(Completed)*
 * **Project 3 (Month 3): Spotify Music Clustering** — Unsupervised audio feature clustering with Scikit-Learn and SQL. ⚪ *(Planned)*
 * **Project 4 (Month 3): Healthcare Risk Prediction & API** — Classification model deployed via FastAPI. ⚪ *(Planned)*

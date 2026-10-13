@@ -88,3 +88,22 @@ python weather_data_pipeline/scripts/run_pipeline.py
 # 3. Run automated data quality test suite
 pytest weather_data_pipeline/tests/test_pipeline.py
 ```
+---
+
+## 📈 Statistical Anomaly Detection & Insights
+
+The pipeline executes automated windowed Z-score calculations and precipitation thresholds across all ingested metro observations:
+
+| Anomaly Classification | Condition / Formula | Key Observed Event |
+| :--- | :--- | :--- |
+| **Extreme Heat Anomaly** | Z >= +2.5 | **Sydney (Oct 12)**: 9 consecutive hours above 29.5°C, peaking at 32.8°C (Z = +3.40). |
+| **Flash Precipitation** | Rainfall >= 5.0 mm/hr | **New York (Oct 11–12)**: Intense squall delivering 5.0–5.4 mm/hr across 3 observation windows. |
+| **Gale Force Wind Gust** | Z >= +2.5 | **London & New York (Oct 9)**: High-wind events clocking 25.2 km/h (Z = +2.95 and +2.55). |
+
+### Meteorological Visualizations
+
+#### 14-Day Hourly Temperature Trajectory by Metro
+![Temperature Trends](charts/temperature_trends.png)
+
+#### Cumulative 14-Day Precipitation Comparison
+![Cumulative Precipitation](charts/cumulative_precipitation.png)
