@@ -56,21 +56,6 @@ The engine computes pairwise Cosine Similarity across the standardized 9-dimensi
 
 ```bash
 python scripts/recommend.py
-6. Click the green **Commit changes...** button at the top right, choose **Commit directly to the `main` branch**, and click **Commit changes**.
-* **Verification:** Click the **Preview** tab or view the file on GitHub — confirm the bottom section ends neatly with the benchmark queries and contains no PowerShell code.
-
----
-
-### Step 2: Verify the Root `README.md` on GitHub
-
-1. Click **data-portfolio** in the breadcrumb trail at the top to return to the repository root.
-2. Click **`README.md`** and review the bottom.
-3. If it displays any stray conflict markers (`<<<<<<< HEAD` or `>>>>>>>`) or duplicated commands:
-   * Click the **pencil icon**.
-   * Clear the file completely (**Ctrl + A**, then **Delete**).
-   * Paste the following clean portfolio summary:
-
-```markdown
 # 🚀 Data Analytics & Engineering Portfolio
 
 Personal portfolio showcasing end-to-end data analytics, engineering pipelines, and predictive modeling systems.
