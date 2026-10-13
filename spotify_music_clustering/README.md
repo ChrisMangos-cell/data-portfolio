@@ -1,4 +1,4 @@
-﻿# 🎧 Spotify Music Clustering & Recommendation Engine
+# 🎧 Spotify Music Clustering & Recommendation Engine
 
 An unsupervised machine learning system clustering 32,800+ tracks into acoustic archetypes using Principal Component Analysis (PCA), $k$-Means clustering, and high-dimensional Cosine Similarity vector search.
 
@@ -56,14 +56,21 @@ The engine computes pairwise Cosine Similarity across the standardized 9-dimensi
 
 ```bash
 python scripts/recommend.py
+6. Click the green **Commit changes...** button at the top right, choose **Commit directly to the `main` branch**, and click **Commit changes**.
+* **Verification:** Click the **Preview** tab or view the file on GitHub — confirm the bottom section ends neatly with the benchmark queries and contains no PowerShell code.
+
 ---
 
-### Step 6: Write the Root Portfolio Documentation
+### Step 2: Verify the Root `README.md` on GitHub
 
-Run this block to update `README.md` at the project root:
+1. Click **data-portfolio** in the breadcrumb trail at the top to return to the repository root.
+2. Click **`README.md`** and review the bottom.
+3. If it displays any stray conflict markers (`<<<<<<< HEAD` or `>>>>>>>`) or duplicated commands:
+   * Click the **pencil icon**.
+   * Clear the file completely (**Ctrl + A**, then **Delete**).
+   * Paste the following clean portfolio summary:
 
-```powershell
-Set-Content -Path "README.md" -Encoding UTF8 -Value @'
+```markdown
 # 🚀 Data Analytics & Engineering Portfolio
 
 Personal portfolio showcasing end-to-end data analytics, engineering pipelines, and predictive modeling systems.
