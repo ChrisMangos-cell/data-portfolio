@@ -76,7 +76,7 @@ Personal portfolio showcasing end-to-end data analytics, engineering pipelines, 
 
 ## 🗺️ Portfolio Roadmap
 
-- **Project 1 (Month 1): E-Commerce Revenue & Retention Engine** — DuckDB SQL, RFM, Cohort Retention, Streamlit Dashboard. ✅ *(Completed)*
-- **Project 2 (Month 2): Weather Data Pipeline & Ingestion Engine** — End-to-end API ETL, DuckDB staging, Prefect orchestration, CI/CD automation, and statistical anomaly detection. ✅ *(Completed)*
-- **Project 3 (Month 3): Spotify Music Clustering** — Unsupervised audio feature clustering, PCA reduction, and cosine recommendation engine. ✅ *(Completed)*
-- **Project 4 (Month 4): Healthcare Clinical Risk Prediction API** — Gradient boosting pipeline, DuckDB boundary cleaning, SHAP explainability, calibrated triage thresholds, and FastAPI serving layer with automated test suite. ✅ *(Completed)*
+- **Project 1: E-Commerce Revenue & Retention Engine** — DuckDB SQL, RFM, Cohort Retention, Streamlit Dashboard. ✅ *(Completed)*
+- **Project 2: Weather Data Pipeline & Ingestion Engine** — End-to-end API ETL, DuckDB staging, Prefect orchestration, CI/CD automation, and statistical anomaly detection. ✅ *(Completed)*
+- **Project 3: Spotify Music Clustering** — Unsupervised audio feature clustering, PCA reduction, and cosine recommendation engine. ✅ *(Completed)*
+- **Project 4: Healthcare Clinical Risk Prediction API** — Gradient boosting pipeline, DuckDB boundary cleaning, SHAP explainability, calibrated triage thresholds, and FastAPI serving layer with automated test suite. ✅ *(Completed)*
