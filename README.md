@@ -56,9 +56,27 @@ Personal portfolio showcasing end-to-end data analytics, engineering pipelines, 
 
 ---
 
+## 🩺 Project 4: Healthcare Clinical Risk Prediction API
+📁 **Repository Directory:** [`healthcare_risk_api/`](./healthcare_risk_api)  
+🛠️ **Tech Stack:** Python (FastAPI, Scikit-Learn, Pydantic, DuckDB, Joblib, Pytest), Uvicorn, SHAP  
+📈 **Dataset:** 69,823 Biologically Validated Clinical Records (Cardiovascular Disease Cohort)
+
+### Executive Results & Machine Learning Serving Summary
+
+| ML / Systems Layer | Technique / Metric | Core Clinical & Engineering Outcome |
+| :--- | :--- | :--- |
+| **Biological Boundary Cleaning** | **DuckDB SQL Staging** | Filtered 177 physiological outliers (records with systolic BP < diastolic BP or out-of-range vitals) from 70,000 raw entries, staging 69,823 clean patient profiles into Parquet. |
+| **Predictive Modeling** | **HistGradientBoostingClassifier** | Trained an optimized gradient boosting pipeline achieving **0.8633 ROC-AUC** and **0.8645 PR-AUC** on stratified test holdouts, outperforming baseline Logistic Regression. |
+| **Clinical Threshold Tuning** | **Optimized 0.40 Decision Gate** | Lowered standard 0.50 threshold to 0.40 to minimize clinical false negatives, reducing missed critical cases from 1,586 to 1,064 (a 32.9% reduction in missed sick patients) with an F1-score of 0.7877. |
+| **Feature Attribution (XAI)** | **SHAP TreeExplainer** | Isolated systolic blood pressure and age as the dominant drivers increasing cardiovascular risk (+2 to +4 SHAP log-odds), with physical activity and baseline cholesterol acting as significant protective factors. |
+| **Microservice Serving** | **FastAPI + Uvicorn** | Built production REST endpoints (`/predict`, `/predict/batch`) with Pydantic v2 validation enforcing dynamic BMI computation and cross-field blood pressure sanity checks. |
+| **Automated Test Guardrails** | **Pytest TestClient Suite** | Implemented automated testing verifying `/health` availability, low/high-risk decision tier assertions, and HTTP 422 Unprocessable Entity error handling for biologically incoherent vitals. |
+
+---
+
 ## 🗺️ Portfolio Roadmap
 
-* **Project 1 (Month 1): E-Commerce Revenue & Retention Engine** — DuckDB SQL, RFM, Cohort Retention, Streamlit Dashboard. ✅ *(Completed)*
-* **Project 2 (Month 2): Weather Data Pipeline & Ingestion Engine** — End-to-end API ETL, DuckDB staging, Prefect orchestration, CI/CD automation, and statistical anomaly detection. ✅ *(Completed)*
-* **Project 3 (Month 3): Spotify Music Clustering** — Unsupervised audio feature clustering, PCA reduction, and cosine recommendation engine. ✅ *(Completed)*
-* **Project 4 (Month 4): Healthcare Risk Prediction & API** — Classification model deployed via FastAPI. ⚪ *(Planned)*
+- **Project 1 (Month 1): E-Commerce Revenue & Retention Engine** — DuckDB SQL, RFM, Cohort Retention, Streamlit Dashboard. ✅ *(Completed)*
+- **Project 2 (Month 2): Weather Data Pipeline & Ingestion Engine** — End-to-end API ETL, DuckDB staging, Prefect orchestration, CI/CD automation, and statistical anomaly detection. ✅ *(Completed)*
+- **Project 3 (Month 3): Spotify Music Clustering** — Unsupervised audio feature clustering, PCA reduction, and cosine recommendation engine. ✅ *(Completed)*
+- **Project 4 (Month 4): Healthcare Clinical Risk Prediction API** — Gradient boosting pipeline, DuckDB boundary cleaning, SHAP explainability, calibrated triage thresholds, and FastAPI serving layer with automated test suite. ✅ *(Completed)*
