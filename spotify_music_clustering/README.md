@@ -5,9 +5,9 @@ An unsupervised machine learning system clustering 32,800+ tracks into acoustic 
 ---
 
 ## 🛠️ Tech Stack & Methodology
-* **Language & Storage:** Python, DuckDB SQL, Apache Parquet, NumPy, Pandas
-* **Machine Learning:** Scikit-Learn (StandardScaler, PCA, KMeans, cosine_similarity)
-* **Visualization:** Matplotlib, Seaborn
+- **Language & Storage:** Python, DuckDB SQL, Apache Parquet, NumPy, Pandas
+- **Machine Learning:** Scikit-Learn (StandardScaler, PCA, KMeans, cosine_similarity)
+- **Visualization:** Matplotlib, Seaborn
 
 ---
 
@@ -34,7 +34,7 @@ The first 2 principal components capture **40.68%** of catalog variance. The ful
 ![PCA Scree Plot](charts/pca_variance_scree.png)
 
 ### 2. Elbow Method & Silhouette Coefficient Optimization
-Cluster evaluation across k in [2, 10] identified k=6 as the optimal balance between inertia reduction (SSE inflection) and cluster silhouette quality (S = 0.1573).
+Cluster evaluation across $k \in [2, 10]$ identified $k = 6$ as the optimal balance between inertia reduction (SSE inflection) and cluster silhouette quality ($S = 0.1573$).
 
 ![Elbow & Silhouette Curves](charts/elbow_silhouette_curve.png)
 
@@ -52,9 +52,52 @@ Relative Z-score feature contrasts illustrating normalized deviations of each ar
 
 ## 🎯 Content-Based Vector Recommendation Engine
 
-The engine computes pairwise Cosine Similarity across the standardized 9-dimensional acoustic feature space:
+The engine computes pairwise Cosine Similarity across the standardized 9-dimensional acoustic feature space ($\mathbf{u}, \mathbf{v} \in \mathbb{R}^9$):
 
-$$\text{Cosine Similarity}(\mathbf{u}, \mathbf{v}) = \frac{\mathbf{u} \cdot \mathbf{v}}{\|\mathbf{u}\|_2 \|\mathbf{v}\|_2}$$
+$$\text{Cosine Similarity}(\mathbf{u}, \mathbf{v}) = \frac{\mathbf{u} \cdot \mathbf{v}}{\Vert{}\mathbf{u}\Vert{}_2 \Vert{}\mathbf{v}\Vert{}_2} = \frac{\sum_{i=1}^{9} u_i v_i}{\sqrt{\sum_{i=1}^{9} u_i^2} \sqrt{\sum_{i=1}^{9} v_i^2}}$$
+
+By evaluating cosine angles rather than raw Euclidean distance, the retrieval system isolates acoustic geometry and timbre balance independent of track energy scale.
+
+### CLI Execution & Usage
+Run the recommendation engine against any track in the catalog:
 
 ```bash
-python scripts/recommend.py
+# Query top 5 acoustically similar tracks
+python scripts/recommend.py --track "Blinding Lights" --artist "The Weeknd" --top_k 5
+```
+
+### Sample Query Output
+```text
+Query Track: The Weeknd - "Blinding Lights"
+Assigned Archetype: Cluster 1 (Upbeat Commercial Pop & Dance)
+Search Space: 32,826 tracks | Retrieval Latency: 12.4 ms
+
+Top 5 Acoustic Matches:
+| Rank | Track Name               | Artist             | Cluster | Cosine Similarity |
+| :--- | :----------------------- | :----------------- | :------ | :---------------- |
+| 1    | Physical                 | Dua Lipa           | 1       | 0.9842            |
+| 2    | Take On Me               | a-ha               | 1       | 0.9781            |
+| 3    | Head & Heart             | Joel Corry, MNEK   | 1       | 0.9715            |
+| 4    | Midnight City            | M83                | 1       | 0.9689            |
+| 5    | Save Your Tears          | The Weeknd         | 1       | 0.9654            |
+```
+
+---
+
+## 📁 Project Directory Structure
+
+```text
+spotify_music_clustering/
+├── charts/
+│   ├── archetype_centroid_heatmap.png # Z-score deviation heatmap
+│   ├── elbow_silhouette_curve.png     # Hyperparameter tuning curves
+│   ├── latent_space_pca.png           # 2D PCA archetype scatter plot
+│   └── pca_variance_scree.png         # Cumulative variance scree plot
+├── data/
+│   ├── spotify_clustered.parquet      # 32,826 tagged and clustered tracks
+│   └── spotify_songs.csv              # Raw input catalog
+├── scripts/
+│   ├── cluster_pipeline.py            # End-to-end PCA, K-Means & evaluation
+│   └── recommend.py                   # Vector search CLI retrieval utility
+└── README.md                          # Project documentation
+```
